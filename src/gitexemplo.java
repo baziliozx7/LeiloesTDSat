@@ -7,6 +7,6 @@
  *
  * @author Bazilio
  */
-public class gitexemplo {
+public class GitExemplo {
     
 }
