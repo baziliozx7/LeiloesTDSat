@@ -1,8 +1,8 @@
 
-import java.util.ArrayList;
+
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import java.sql.ResultSet;
+
 
 
 public class listagemVIEW extends javax.swing.JFrame {
@@ -140,7 +140,7 @@ public class listagemVIEW extends javax.swing.JFrame {
 
    private DefaultTableModel montarTabela(){
         ProdutosDAO ageDAO = new ProdutosDAO ();
-        String[] colunas = { "nome", "valor", "status"};
+        String[] colunas = { "id", "valor", "nome", "status"};
         
         DefaultTableModel tabela = new DefaultTableModel(colunas, 0);
         
@@ -169,13 +169,13 @@ public class listagemVIEW extends javax.swing.JFrame {
         
         ProdutosDAO produtosdao = new ProdutosDAO();
         
-        //produtosdao.venderProduto(Integer.parseInt(id));
-        listarProdutos();
+        produtosdao.venderProduto(Integer.parseInt(id));
+        listarTodos();
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-        //vendasVIEW vendas = new vendasVIEW(); 
-       // vendas.setVisible(true);
+        VendasVIEW vendas = new VendasVIEW(); 
+        vendas.setVisible(true);
     }//GEN-LAST:event_btnVendasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -187,9 +187,7 @@ public class listagemVIEW extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listaProdutos);
     }//GEN-LAST:event_formWindowGainedFocus
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -235,14 +233,14 @@ public class listagemVIEW extends javax.swing.JFrame {
     private javax.swing.JTable listaProdutos;
     // End of variables declaration//GEN-END:variables
 
-    private void listarProdutos(){
+    private void listarTodos(){
         try {
             ProdutosDAO produtosdao = new ProdutosDAO();
             
             DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
             model.setNumRows(0);
             
-            ArrayList<ProdutosDTO> listagem = produtosdao.listarTodos();
+            List<ProdutosDTO> listagem = produtosdao.listarTodos();
             
             for(int i = 0; i < listagem.size(); i++){
                 model.addRow(new Object[]{
