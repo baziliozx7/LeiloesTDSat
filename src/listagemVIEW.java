@@ -140,7 +140,7 @@ public class listagemVIEW extends javax.swing.JFrame {
 
    private DefaultTableModel montarTabela(){
         ProdutosDAO ageDAO = new ProdutosDAO ();
-        String[] colunas = { "nome", "valor", "status"};
+        String[] colunas = { "id","valor", "nome", "status"};
         
         DefaultTableModel tabela = new DefaultTableModel(colunas, 0);
         
@@ -169,13 +169,13 @@ public class listagemVIEW extends javax.swing.JFrame {
         
         ProdutosDAO produtosdao = new ProdutosDAO();
         
-        //produtosdao.venderProduto(Integer.parseInt(id));
+        produtosdao.venderProduto(Integer.parseInt(id));
         listarProdutos();
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-        //vendasVIEW vendas = new vendasVIEW(); 
-       // vendas.setVisible(true);
+        VendasVIEW vendas = new VendasVIEW(); 
+        vendas.setVisible(true);
     }//GEN-LAST:event_btnVendasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -242,7 +242,7 @@ public class listagemVIEW extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
             model.setNumRows(0);
             
-            ArrayList<ProdutosDTO> listagem = produtosdao.listarTodos();
+            List<ProdutosDTO> listagem = produtosdao.listarTodos();
             
             for(int i = 0; i < listagem.size(); i++){
                 model.addRow(new Object[]{
