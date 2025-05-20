@@ -166,14 +166,20 @@ public class listagemVIEW extends javax.swing.JFrame {
   
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         String id = id_produto_venda.getText();
+         ProdutosDAO Produtosdao = new ProdutosDAO();
+         Produtosdao.venderProduto(Integer.parseInt(id));
+   
+         Listarprodutos();
+      
         
-        ProdutosDAO produtosdao = new ProdutosDAO();
-        
-        produtosdao.venderProduto(Integer.parseInt(id));
-        listarProdutos();
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
+       
+        
+        
+        
+        
         VendasVIEW vendas = new VendasVIEW(); 
         vendas.setVisible(true);
     }//GEN-LAST:event_btnVendasActionPerformed
@@ -187,9 +193,6 @@ public class listagemVIEW extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listaProdutos);
     }//GEN-LAST:event_formWindowGainedFocus
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -235,7 +238,7 @@ public class listagemVIEW extends javax.swing.JFrame {
     private javax.swing.JTable listaProdutos;
     // End of variables declaration//GEN-END:variables
 
-    private void listarProdutos(){
+    private void Listarprodutos(){
         try {
             ProdutosDAO produtosdao = new ProdutosDAO();
             
